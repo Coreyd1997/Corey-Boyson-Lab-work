@@ -1,3 +1,3 @@
 # Corey-Boyson-Lab-work
-##a collection of work for the boyson lab project
+## a collection of work for the boyson lab project
 ## datafiles are tab delim  
