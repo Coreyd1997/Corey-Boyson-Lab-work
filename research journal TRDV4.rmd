@@ -1,0 +1,23 @@
+#  A Quick look at TRDV4 control samples 1-14
+## aquiring samples 
+The the bulk samples were selected as the controls sample numbers 1-14 with replicates there are 14 samples each with two replicates
+## cleaning the data 
+Trimommatic version 0.39 was used to clean the data
+the files and some locations were defined inorder to quickly solve exceptions that were being raised if we want to make this into a pipeline at least some of these will need to be redefined implicitly in order to make this pipeline more universal to simular data  
+
+ currently the script is only providing 4 outputs and apears to be deleting some of the data then throwing file not found errors 
+ possibly have it do it one by one for the samples and use of the mv fuction
+ determine the best way to create relitive paths and regular expressions to reduce the writting
+
+ **Cleaning of the data is done** with all 56 expected files accounted for 
+
+## Data annotation
+The data was annotated with migmap version 1.0.3-2
+the following scripts were run  the scripts are mostly based of somens  scipts 
+the merging  and data correction will be in separete scrips from the base migmap annotation due to he was having issues of his base scripts erroring and not producing outputs for some data files
+
+## Extracting TRDV7 and fixing the frequencies
+An r script will be used to extract only TRDV7 from the  migmap outputted datafile and then the frequency generated from migmap will be updated with the script to account for the extraction for TRDV&
+
+## Visulization
+The data will be vizualized with VDJ tools package, spcificly FANCYVDJ will be used to create the graph
