@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Sep 26 17:34:29 2019
+
+@author: corey
+"""
+def tcr_type_isolator(tcr_type):
+    import pandas as pd
+    import os
+
+    directory = os.fsencode("/home/corey/Documents/Boyson_lab_work/datafile/vdjtool_convert_output/")
+    os.chdir(directory)    
+
+    for file in os.listdir(directory):
+        filename = os.fsdecode(file)
+        if filename.endswith(".txt"):
+            # filename = input("filename w/o ext") #without .ext
+            ##Please change the file input to the file you wish to filter out possibly fix extranous b fin loop with fstring
+            mapped_reads = pd.read_csv(filename,sep='\t',header=(0))
+            trdv7data=mapped_reads[mapped_reads.v.str.contains(tcr_type,case=False)]
+            #the column "count" was changed to "observed" to prevent and atrobute error with pandas
+            trdv7data= trdv7data.rename(columns= {'count': 'observed'})
+            #the total  observed 
+            totalobs=trdv7data.observed.sum()
+            #updating to freq to be inline with the total observed
+            trdv7data.freq=trdv7data.observed/totalobs
+            #changing back for vdj
+            basename=(os.path.splitext(os.path.basename(filename))[0])
+            file_output=basename[:-7]
+            trdv7data= trdv7data.rename(columns= {'observed': 'count'})
+            #file_output=input("fileoutput please:   ")
+            pathout="/home/corey/Documents/Boyson_lab_work/datafile/for_vdj"
+            trdv7data.to_csv(f"{pathout}/{file_output}_forvdj_{tcr_type}.txt", sep='\t', index=False)
+            print(f"{tcr_type} is done ")
+"""continue
+    elif filename.contains("forvdj"):
+        break
+        
+    else:
+         continue"""
