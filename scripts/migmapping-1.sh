@@ -1,8 +1,8 @@
 #PBS -l nodes=1:ppn=6,pmem=8gb,pvmem=9gb
 #PBS -l walltime=5:00:00
 #PBS -N migmap_MergeContig
-#PBS -j oe   
-#PBS -M cdavis28@uvm.edu
+#PBS -<name>
+#PBS -M <email>
 #PBS -m bea
 #export LC_ALL=en_US.utf-8
 #export LANG=en_US.utf-8
