@@ -33,9 +33,3 @@ def tcr_type_isolator(tcr_type):
             pathout="/home/corey/Documents/Boyson_lab_work/datafile/for_vdj"
             trdv7data.to_csv(f"{pathout}/{file_output}_forvdj_{tcr_type}.txt", sep='\t', index=False)
             print(f"{tcr_type} is done ")
-"""continue
-    elif filename.contains("forvdj"):
-        break
-        
-    else:
-         continue"""
