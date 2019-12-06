@@ -15,8 +15,8 @@ def tcr_type_isolator(tcr_type):
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename.endswith(".txt"):
+            #for debugging
             # filename = input("filename w/o ext") #without .ext
-            ##Please change the file input to the file you wish to filter out possibly fix extranous b fin loop with fstring
             mapped_reads = pd.read_csv(filename,sep='\t',header=(0))
             trdv7data=mapped_reads[mapped_reads.v.str.contains(tcr_type,case=False)]
             #the column "count" was changed to "observed" to prevent and atrobute error with pandas
@@ -29,7 +29,8 @@ def tcr_type_isolator(tcr_type):
             basename=(os.path.splitext(os.path.basename(filename))[0])
             file_output=basename[:-7]
             trdv7data= trdv7data.rename(columns= {'observed': 'count'})
-            #file_output=input("fileoutput please:   ")
+            #for debugging
+            #file_output=input("fileoutput please:   ") 
             pathout="/home/corey/Documents/Boyson_lab_work/datafile/for_vdj"
             trdv7data.to_csv(f"{pathout}/{file_output}_forvdj_{tcr_type}.txt", sep='\t', index=False)
             print(f"{tcr_type} is done ")
